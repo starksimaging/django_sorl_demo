@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uploaded Images</title>
+</head>
+<body>
+    <h2>Uploaded Images</h2>
+    {% load thumbnail %}
+    <a href="{% url 'upload_image' %}">Upload Another Image</a>
+    <ul>
+        {% for image in images %}
+            <li>
+                <p>Original Image:</p>
+                <img src="{{ image.image.url }}" width="200">
+                
+                <p>Thumbnail:</p>
+                <img src="{% thumbnail image.image "100x100" crop="center" %}">
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
